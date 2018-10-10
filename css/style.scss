@@ -1,0 +1,57 @@
+@charset "utf-8";
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-size:12px;
+    font-family: "微软雅黑";
+}
+$color:blue;
+h1,h2,h3{
+    color: $color;
+  }
+ 
+  //代码重用（函数）
+  //使用。定义一个类 然后使用@extend  调用这个类    缺点，不能指定参数
+  .public{
+      width:960px;
+      margin :0 auto;
+  }
+  //使用@mixin定义一个代码块
+  @mixin common($w:960px,$h:1000px){
+      width:$w;
+      margin :0 auto;
+      height:$h;
+  }
+  
+  #main{
+      @include common(89px,88px);
+  }
+  
+  
+  
+#header{
+    height:100px;
+    @extend .public;
+}
+#nav{
+   @extend .public;
+    height:50px;
+    margin:0 auto;
+    ul{
+        margin-left:40px;
+        li{
+            float:left;
+            padding:0 10px;
+            a{
+                color:#000;
+                &:hover{
+                    color:red;
+                }
+            }
+        }
+    }
+}
+
+
